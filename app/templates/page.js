@@ -1,44 +1,24 @@
-import Link from 'next/link'
+'use client'
 
-export default function Templates() {
-  const templates = [
-    {
-      id: 'restaurant',
-      name: 'Restaurant',
-      description: 'Perfect for cafes, bars, and restaurants.',
-      image: 'https://picsum.photos/seed/restaurant/400/300 ',
-    },
-    {
-      id: 'freelancer',
-      name: 'Freelancer',
-      description: 'Great for consultants, designers, developers.',
-      image: 'https://picsum.photos/seed/freelancer/400/300 ',
-    },
-    {
-      id: 'shop',
-      name: 'Shop',
-      description: 'Ideal for small shops and boutiques.',
-      image: 'https://picsum.photos/seed/shop/400/300 ',
-    },
-    {
-      id: 'blog',
-      name: 'Blog',
-      description: 'Start your personal blog or portfolio.',
-      image: 'https://picsum.photos/seed/blog/400/300 ',
-    },
-  ]
+import { useRouter } from 'next/navigation'
+import { templates } from './templates'
+
+export default function TemplatesPage() {
+  const router = useRouter()
 
   return (
     <main className="bg-white min-h-screen">
-      {/* Header */}
-      <section className="py-10 px-6 text-center border-b border-gray-200">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Choose Your Template</h1>
-        <p className="mt-2 text-gray-600">Pick a starting point for your website</p>
+      {/* Hero Section */}
+      <section className="py-20 px-6 text-center border-b border-gray-200">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Choose Your Template</h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Pick a starting point for your website. All templates are mobile-friendly and customizable.
+        </p>
       </section>
 
       {/* Template Grid */}
       <section className="py-12 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {templates.map((template) => (
             <div
               key={template.id}
@@ -53,15 +33,15 @@ export default function Templates() {
                 <h3 className="text-xl font-semibold text-gray-800">{template.name}</h3>
                 <p className="text-gray-600 mt-1">{template.description}</p>
                 <div className="mt-3 flex justify-between items-center">
-                  <button className="text-indigo-600 font-medium group-hover:underline">
+                  <span className="text-indigo-600 text-sm group-hover:underline">
                     Preview
-                  </button>
-                  <Link
-                    href={`/editor?template=${template.id}`}
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-md text-sm hover:bg-indigo-700 transition"
+                  </span>
+                  <button
+                    onClick={() => router.push(`/editor/${template.id}`)}
+                    className="px-4 py-2 bg-indigo-600 text-white text-sm rounded-md hover:bg-indigo-700 transition"
                   >
                     Choose Template
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -70,7 +50,7 @@ export default function Templates() {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 px-6 text-center text-gray-500 text-sm mt-12 border-t border-gray-200">
+      <footer className="py-6 px-6 text-center text-gray-500 text-sm mt-12 border-t bg-white">
         © {new Date().getFullYear()} EasySite – Made for small businesses in Sweden
       </footer>
     </main>
