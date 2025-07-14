@@ -25,6 +25,16 @@ export default function Home() {
             Learn More
           </a>
         </div>
+        <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+  <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+    <a href="/templates" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 sm:px-8">
+      Try Free
+    </a>
+    <a href="#features" className="flex items-center justify-center px-4 py-3 border border-indigo-600 text-indigo-600 font-medium rounded-md shadow-sm hover:bg-indigo-50 sm:px-8">
+      Learn More
+    </a>
+  </div>
+</div>
       </section>
 
       {/* Features Section */}
